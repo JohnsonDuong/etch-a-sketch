@@ -1,0 +1,17 @@
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#grid-container {
+    display: grid;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+}
+
+.grid-pixel {
+    user-select: none;
+}
