@@ -1,8 +1,15 @@
 body {
-    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    display: flex;
 }
 
 #grid-container {
@@ -12,6 +19,24 @@ body {
     background-color: white;
 }
 
+.title {
+    color: white;
+    margin-bottom: 100px;
+    font-size: 75px;
+}
+
 .grid-pixel {
     user-select: none;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 20px;
+}
+
+button {
+    margin: 10px;
+    padding: 20px 50px;
 }
