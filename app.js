@@ -4,14 +4,13 @@
 
 //Elements selected from the DOM
 const DEFAULT_MODE = 'color';
-const DEFAULT_COLOR = 'black';
 const DEFAULT_SIZE = '2';
 
 const BACKGROUND_COLOR = 'white';
 
 //Variables
 let currentMode = DEFAULT_MODE;
-let currentColor = DEFAULT_COLOR;
+
 let currentSize = DEFAULT_SIZE;
 
 const grid = document.getElementById('grid-container');
@@ -25,14 +24,12 @@ let gridLineMode = false;
 eraserButton.onclick = () => setCurrentMode('eraser');
 rainbowButton.onclick = () => setCurrentMode('rainbow');
 
-
 //Clear the canvas
 clearButton.onclick = () => {
 
     for (const pixel of pixelList) {
         pixel.classList.remove('filled-pixel');
         pixel.style.backgroundColor = BACKGROUND_COLOR;
-        console.log(pixel)
     }
 
 }
@@ -68,6 +65,7 @@ function draw(e) {
 
     //Set the brush to color mode
     if (currentMode == 'color') {
+        let currentColor = document.getElementById('color-picker').value;
         pixel.style.backgroundColor = currentColor;
         pixel.classList.add('filled-pixel');
         console.log(pixel)
