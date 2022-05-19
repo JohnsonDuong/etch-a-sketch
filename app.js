@@ -18,8 +18,22 @@ const eraserButton = document.getElementById('eraser');
 const toggleGridButton = document.getElementById('grid-lines');
 const clearButton = document.getElementById('clear');
 
+let gridLineMode = false;
+
 eraserButton.onclick = () => setCurrentMode('eraser');
 rainbowButton.onclick = () => setCurrentMode('rainbow');
+
+//Toggle the grid lines
+toggleGridButton.onclick = () => {
+    gridLineMode = !gridLineMode;
+    if (gridLineMode == true){
+        grid.childNodes.forEach((element) => element.classList.add('grid-lines'));
+    }
+
+    if (gridLineMode == false){
+        grid.childNodes.forEach((element) => element.classList.remove('grid-lines'));
+    }
+};
 
 let mouseDown = false;
 document.getElementById('grid-container').onmousedown = () => mouseDown = true;
@@ -31,9 +45,6 @@ function setCurrentMode (newMode) {
 
 //Draw on the canvas depending on the mode
 function draw(e) {
-
-    // console.log(e.type);
-    // console.log(mouseDown);
 
     //Does not allow drawing unless mouse is down when over a pixel
     if (e.type === 'mouseover' && !mouseDown) return;
@@ -65,7 +76,7 @@ function createGrid(size) {
 
     for (let i = 0; i < size * size; i++) {
         const gridPixel = document.createElement('div');
-        gridPixel.classList.add("grid-pixel");
+        // gridPixel.classList.add("grid-pixel");
         gridPixel.addEventListener('mousedown', draw);
         gridPixel.addEventListener('mouseover', draw);
         grid.appendChild(gridPixel);
