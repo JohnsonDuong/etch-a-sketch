@@ -4,25 +4,27 @@
 
 //Elements selected from the DOM
 const DEFAULT_MODE = 'color';
-const DEFAULT_SIZE = '2';
-
+const DEFAULT_SIZE = '50';
 const BACKGROUND_COLOR = 'white';
+
+const grid = document.getElementById('grid-container');
+const colorButton = document.getElementById('color-button');
+const rainbowButton = document.getElementById('rainbow-button');
+const eraserButton = document.getElementById('eraser-button');
+const toggleGridButton = document.getElementById('grid-button');
+const clearButton = document.getElementById('clear-button');
+
 
 //Variables
 let currentMode = DEFAULT_MODE;
-
 let currentSize = DEFAULT_SIZE;
-
-const grid = document.getElementById('grid-container');
-const rainbowButton = document.getElementById('rainbow');
-const eraserButton = document.getElementById('eraser');
-const toggleGridButton = document.getElementById('grid-lines');
-const clearButton = document.getElementById('clear');
-
 let gridLineMode = false;
 
-eraserButton.onclick = () => setCurrentMode('eraser');
+colorButton.onclick = () => setCurrentMode('color');
 rainbowButton.onclick = () => setCurrentMode('rainbow');
+eraserButton.onclick = () => setCurrentMode('eraser');
+
+
 
 //Clear the canvas
 clearButton.onclick = () => {
@@ -38,10 +40,12 @@ clearButton.onclick = () => {
 toggleGridButton.onclick = () => {
     gridLineMode = !gridLineMode;
     
+    //Show the grid lines
     if (gridLineMode == true){
         pixelList.forEach((pixel) => pixel.classList.add('grid-lines'));
     }
 
+    //Hide the grid lines
     else if (gridLineMode == false){
         pixelList.forEach((pixel) => pixel.classList.remove('grid-lines'));
     }
@@ -68,7 +72,7 @@ function draw(e) {
         let currentColor = document.getElementById('color-picker').value;
         pixel.style.backgroundColor = currentColor;
         pixel.classList.add('filled-pixel');
-        console.log(pixel)
+        // console.log(pixel)
     }
 
     //Set the pen to the rainbow mode
