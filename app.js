@@ -5,7 +5,9 @@
 //Elements selected from the DOM
 const DEFAULT_MODE = 'color';
 const DEFAULT_COLOR = 'black';
-const DEFAULT_SIZE = '10';
+const DEFAULT_SIZE = '2';
+
+const BACKGROUND_COLOR = 'white';
 
 //Variables
 let currentMode = DEFAULT_MODE;
@@ -23,15 +25,28 @@ let gridLineMode = false;
 eraserButton.onclick = () => setCurrentMode('eraser');
 rainbowButton.onclick = () => setCurrentMode('rainbow');
 
+
+//Clear the canvas
+clearButton.onclick = () => {
+
+    for (const pixel of pixelList) {
+        pixel.classList.remove('filled-pixel');
+        pixel.style.backgroundColor = BACKGROUND_COLOR;
+        console.log(pixel)
+    }
+
+}
+
 //Toggle the grid lines
 toggleGridButton.onclick = () => {
     gridLineMode = !gridLineMode;
+    
     if (gridLineMode == true){
-        grid.childNodes.forEach((element) => element.classList.add('grid-lines'));
+        pixelList.forEach((pixel) => pixel.classList.add('grid-lines'));
     }
 
-    if (gridLineMode == false){
-        grid.childNodes.forEach((element) => element.classList.remove('grid-lines'));
+    else if (gridLineMode == false){
+        pixelList.forEach((pixel) => pixel.classList.remove('grid-lines'));
     }
 };
 
@@ -46,12 +61,16 @@ function setCurrentMode (newMode) {
 //Draw on the canvas depending on the mode
 function draw(e) {
 
+    const pixel = e.target;
+
     //Does not allow drawing unless mouse is down when over a pixel
     if (e.type === 'mouseover' && !mouseDown) return;
 
     //Set the brush to color mode
     if (currentMode == 'color') {
-        e.target.style.backgroundColor = currentColor;
+        pixel.style.backgroundColor = currentColor;
+        pixel.classList.add('filled-pixel');
+        console.log(pixel)
     }
 
     //Set the pen to the rainbow mode
@@ -60,12 +79,14 @@ function draw(e) {
         const randomG = Math.floor(Math.random() * 256);
         const randomB = Math.floor(Math.random() * 256);
 
-        e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+        pixel.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+        pixel.classList.add('filled-pixel');
     }
 
     //Toggle the eraser
     else if (currentMode == 'eraser') {
-        e.target.style.backgroundColor = 'white';
+        pixel.style.backgroundColor = 'white';
+        pixel.classList.remove('filled-pixel');
     }
 }
 
@@ -84,3 +105,6 @@ function createGrid(size) {
 }   
 
 createGrid(currentSize);
+
+
+let pixelList = grid.childNodes;
