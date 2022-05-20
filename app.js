@@ -121,7 +121,9 @@ function createGrid(size) {
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-    //Remove any exisiting grid pixels
+    document.getElementById('grid-size').textContent = `Grid Size: ${size} x ${size}`;
+
+    //Remove any existing grid pixels
     while (grid.hasChildNodes()) {
         grid.removeChild(grid.firstChild);
     }
