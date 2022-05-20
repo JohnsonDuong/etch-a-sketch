@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Etch A Sketch</title>
+    <title>Pixel Art</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
   </head>
@@ -12,12 +12,28 @@
     <h1 class="title">Pixel Art</h1>
     <div class="box">
       <div class="settings">
-        <label for="colorpicker">Color</label>
-        <input type="color" id="color-picker" value="#000000" />
-        <button id="color-button">Coloring Pen</button>
-        <button id="rainbow-button">Rainbow Pen</button>
+        <h2>Pen Options</h2>
+        <label for="pen-color-picker">Pen Color</label>
+        <input type="color" id="pen-color-picker" value="#000000" />
+        <button id="color-button">Color</button>
+        <button id="rainbow-button">Rainbow</button>
         <button id="eraser-button">Eraser</button>
-        <button id="grid-button">Toggle Grid Lines</button>
+
+        <h2>Canvas Option</h2>
+        <label for="background-color-picker">Background Color</label>
+        <input type="color" id="background-color-picker" value="#ffffff" />
+        <div class="slidecontainer">
+          <input
+            type="range"
+            min="1"
+            max="32"
+            value="16"
+            class="slider"
+            id="slider"
+          />
+          <label for="slidecontainer">Grid Size: 16 X 16</label>
+        </div>
+        <button id="grid-button">Grid</button>
         <button id="clear-button">Clear</button>
       </div>
       <div id="grid-container"></div>
