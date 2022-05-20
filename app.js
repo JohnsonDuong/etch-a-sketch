@@ -27,16 +27,14 @@ colorButton.onclick = () => setCurrentMode('color');
 rainbowButton.onclick = () => setCurrentMode('rainbow');
 eraserButton.onclick = () => setCurrentMode('eraser');
 toggleGridButton.onclick = () => toggleGrid();
-
 slider.oninput = () => createGrid(slider.value);
+clearButton.onclick = () => clearCanvas();
 
 let mouseDown = false;
 document.getElementById('grid-container').onmousedown = () => mouseDown = true;
 document.getElementById('grid-container').onmouseup = () => mouseDown = false;
 
 //Clear the canvas
-clearButton.onclick = () => clearCanvas();
-
 function clearCanvas() {
     for (const pixel of pixelList) {
         pixel.classList.remove('filled-pixel');
