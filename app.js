@@ -23,10 +23,19 @@ let currentColor = 'black';
 let currentSize = DEFAULT_SIZE;
 let gridLineMode = false;
 
+let randomR;
+let randomG;
+let randomB;
+
 //Event listeners
 bgColorPicker.oninput = () => {
     grid.style.backgroundColor = bgColorPicker.value;
-    setCurrentMode('eraser')
+
+    if (currentMode == 'eraser') {
+        currentColor = bgColorPicker.value;
+        document.documentElement.style.setProperty('--cursor-color', currentColor);
+        console.log(currentMode)
+    }
 }
 penColorPicker.oninput = () => setCurrentMode('color');
 colorButton.onclick = () => setCurrentMode('color');
@@ -84,6 +93,11 @@ function setCurrentMode (newMode) {
         rainbowButton.classList.add('active-button');
         eraserButton.classList.remove('active-button');
 
+        randomR = Math.floor(Math.random() * 256);
+        randomG = Math.floor(Math.random() * 256);
+        randomB = Math.floor(Math.random() * 256);
+
+        currentColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
         document.documentElement.style.setProperty('--cursor-color', currentColor);
     }
 
@@ -92,7 +106,7 @@ function setCurrentMode (newMode) {
         rainbowButton.classList.remove('active-button');
         eraserButton.classList.add('active-button');
 
-        currentColor = document.getElementById('background-color-picker').value;
+        currentColor = bgColorPicker.value;
         document.documentElement.style.setProperty('--cursor-color', currentColor);
     }
 }
@@ -114,15 +128,17 @@ function draw(e) {
 
     //Set the pen to the rainbow mode
     else if (currentMode == 'rainbow') {
-        const randomR = Math.floor(Math.random() * 256);
-        const randomG = Math.floor(Math.random() * 256);
-        const randomB = Math.floor(Math.random() * 256);
 
-        document.documentElement.style.setProperty('--cursor-color', currentColor);
-        currentColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+
 
         pixel.style.backgroundColor = currentColor;
         pixel.classList.add('filled-pixel');
+
+        randomR = Math.floor(Math.random() * 256);
+        randomG = Math.floor(Math.random() * 256);
+        randomB = Math.floor(Math.random() * 256);
+        currentColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+        document.documentElement.style.setProperty('--cursor-color', currentColor);
         
     }
 
