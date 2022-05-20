@@ -157,3 +157,10 @@ input[type='color']:hover {
     background-color: var(--cursor-color) !important;
     background-image: none;
 }
+
+img {
+    width: 100px;
+    height: 100px;
+    margin-top: 50px;
+    margin-right: 20px;
+}
