@@ -50,17 +50,37 @@ function toggleGrid () {
     //Show the grid lines
     if (gridLineMode == true){
         pixelList.forEach((pixel) => pixel.classList.add('grid-lines'));
+        toggleGridButton.classList.add('active-button');
     }
 
     //Hide the grid lines
     else if (gridLineMode == false){
         pixelList.forEach((pixel) => pixel.classList.remove('grid-lines'));
+        toggleGridButton.classList.remove('active-button');
     }
 }
 
 //Set the current mode
 function setCurrentMode (newMode) {
     currentMode = newMode;
+
+    if (currentMode == 'color') {
+        colorButton.classList.add('active-button');
+        rainbowButton.classList.remove('active-button');
+        eraserButton.classList.remove('active-button');
+    }
+
+    else if (currentMode == 'rainbow') {
+        colorButton.classList.remove('active-button');
+        rainbowButton.classList.add('active-button');
+        eraserButton.classList.remove('active-button');
+    }
+
+    else if (currentMode == 'eraser') {
+        colorButton.classList.remove('active-button');
+        rainbowButton.classList.remove('active-button');
+        eraserButton.classList.add('active-button');
+    }
 }
 
 //Draw on the canvas depending on the mode
@@ -76,7 +96,6 @@ function draw(e) {
         let currentColor = document.getElementById('pen-color-picker').value;
         pixel.style.backgroundColor = currentColor;
         pixel.classList.add('filled-pixel');
-        // console.log(pixel)
     }
 
     //Set the pen to the rainbow mode

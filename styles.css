@@ -134,7 +134,10 @@ input[type="color"] {
     margin-right: 8px;
 }
 
-button:hover,
+button:hover {
+    transform: scale(1.02);
+}
+
 input[type='color']:hover {
-  transform: scale(1.05);
+    transform: scale(1.08);
 }
