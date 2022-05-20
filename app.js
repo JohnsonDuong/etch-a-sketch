@@ -14,15 +14,21 @@ const eraserButton = document.getElementById('eraser-button');
 const toggleGridButton = document.getElementById('grid-button');
 const clearButton = document.getElementById('clear-button');
 const bgColorPicker = document.getElementById('background-color-picker');
+const penColorPicker = document.getElementById('pen-color-picker');
 const slider = document.getElementById('slider');
 
 //Variables
 let currentMode = DEFAULT_MODE;
+let currentColor = 'black';
 let currentSize = DEFAULT_SIZE;
 let gridLineMode = false;
 
 //Event listeners
-bgColorPicker.oninput = () => grid.style.backgroundColor = bgColorPicker.value;
+bgColorPicker.oninput = () => {
+    grid.style.backgroundColor = bgColorPicker.value;
+    setCurrentMode('eraser')
+}
+penColorPicker.oninput = () => setCurrentMode('color');
 colorButton.onclick = () => setCurrentMode('color');
 rainbowButton.onclick = () => setCurrentMode('rainbow');
 eraserButton.onclick = () => setCurrentMode('eraser');
@@ -68,18 +74,26 @@ function setCurrentMode (newMode) {
         colorButton.classList.add('active-button');
         rainbowButton.classList.remove('active-button');
         eraserButton.classList.remove('active-button');
+
+        currentColor = document.getElementById('pen-color-picker').value;
+        document.documentElement.style.setProperty('--cursor-color', currentColor);
     }
 
     else if (currentMode == 'rainbow') {
         colorButton.classList.remove('active-button');
         rainbowButton.classList.add('active-button');
         eraserButton.classList.remove('active-button');
+
+        document.documentElement.style.setProperty('--cursor-color', currentColor);
     }
 
     else if (currentMode == 'eraser') {
         colorButton.classList.remove('active-button');
         rainbowButton.classList.remove('active-button');
         eraserButton.classList.add('active-button');
+
+        currentColor = document.getElementById('background-color-picker').value;
+        document.documentElement.style.setProperty('--cursor-color', currentColor);
     }
 }
 
@@ -87,13 +101,13 @@ function setCurrentMode (newMode) {
 function draw(e) {
 
     const pixel = e.target;
-
+    
     //Does not allow drawing unless mouse is down when over a pixel
     if (e.type === 'mouseover' && !mouseDown) return;
 
     //Set the brush to color mode
     if (currentMode == 'color') {
-        let currentColor = document.getElementById('pen-color-picker').value;
+        // currentColor = document.getElementById('pen-color-picker').value;
         pixel.style.backgroundColor = currentColor;
         pixel.classList.add('filled-pixel');
     }
@@ -104,12 +118,17 @@ function draw(e) {
         const randomG = Math.floor(Math.random() * 256);
         const randomB = Math.floor(Math.random() * 256);
 
-        pixel.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+        document.documentElement.style.setProperty('--cursor-color', currentColor);
+        currentColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+
+        pixel.style.backgroundColor = currentColor;
         pixel.classList.add('filled-pixel');
+        
     }
 
     //Toggle the eraser
     else if (currentMode == 'eraser') {
+        currentColor = bgColorPicker.value;
         pixel.style.background = 'none';
         pixel.classList.remove('filled-pixel');
     }

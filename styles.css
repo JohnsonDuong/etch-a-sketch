@@ -1,12 +1,23 @@
+:root {
+    --cursor-color: #000000;
+    --canvas-color: #ffffff;
+
+    --color1: #011936;
+    --color2: #02234B;
+    --color3: #DE369D;
+    --color4: #F2F7F2;
+}
+
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #011936;
+    background-color: var(--color1);
     margin: 0;
     padding: 0;
-    color: #DE369D;
+    color: var(--color3);
     font-family: 'Nunito', sans-serif;
 }
 
@@ -16,9 +27,9 @@ body {
 
 button {
 	color: inherit;
-	border: 1.5px solid #DE369D;
+	border: 1.5px solid var(--color3);
 	cursor: pointer;
-    background-color: #02234B;
+    background-color: var(--color2);
     width: auto;
     height: 40px;
     padding: 0;
@@ -31,8 +42,8 @@ button {
     display: grid;
     width: 550px;
     height: 550px;
-    background-color: white;
-    border: 30px solid #02234B;
+    background-color: var(--canvas-color);
+    border: 30px solid var(--color2);
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -47,13 +58,13 @@ button {
     flex-direction: column;
     padding: 20px;
     margin-right: 100px;
-    background-color: #02234B;
+    background-color: var(--color2);
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .grid-lines {
-    border: 0.5px solid #6A7E95;
+    border: 0.5px solid var(--color2);
 }
 
 .filled-pixel {
@@ -61,8 +72,8 @@ button {
 }
 
 .active-button {
-    background-color: #DE369D;
-    color: #02234B;
+    background-color: var(--color3);
+    color: var(--color2);
 }
 
 .slide-container {
@@ -81,7 +92,7 @@ button {
     width: 100%;
     height: 3px;
     border-radius: 5px;  
-    background: #F2F7F2;
+    background: var(--color4);
     outline: none;
     -webkit-transition: .2s;
     transition: opacity .2s;
@@ -93,7 +104,7 @@ button {
     width: 20px;
     height: 20px;
     border-radius: 50%; 
-    background: #DE369D;
+    background: var(--color3);
     cursor: pointer;
 }
 
@@ -101,12 +112,8 @@ button {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #DE369D;
+    background: var(--color3);
     cursor: pointer;
-}
-
-.slider::-ms-fill-lower { 
-    background: dodgerblue;
 }
 
 .settings {
@@ -128,10 +135,10 @@ input[type="color"] {
     border: none;
     padding: 0px;
     border: none;
-    cursor: pointer;
     width: 70px;
     height: 40px;
     margin-right: 8px;
+    cursor: pointer;
 }
 
 button:hover {
@@ -140,4 +147,13 @@ button:hover {
 
 input[type='color']:hover {
     transform: scale(1.08);
+}
+
+#grid-container div {
+    cursor: crosshair;
+}
+
+#grid-container div:hover {
+    background-color: var(--cursor-color) !important;
+    background-image: none;
 }
