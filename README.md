@@ -1,7 +1,7 @@
 <br />
 <h1>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/johnsonduong/pixart/images/logo.png" alt="Logo" width="110" height="110">
+  <img src="https://github.com/johnsonduong/pixart/blob/main/images/logo.png?raw=true" alt="Logo" width="110" height="110">
   <br>PixArt
 </h1>
 <p align="center">
@@ -16,7 +16,7 @@
 
 <p align="center">
   
-![screenshot](img/pixart.png)
+<img src="https://github.com/johnsonduong/pixart/blob/main/images/pixart.png?raw=true" alt="Logo" width="110" height="110">
 </p>                                                                                                                             
                                                                                                                                                       
 ## About The Project
