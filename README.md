@@ -16,7 +16,7 @@
 
 <p align="center">
   
-<img src="https://github.com/johnsonduong/pixart/blob/main/images/pixart.png?raw=true" alt="Logo" width="110" height="110">
+<img src="https://github.com/johnsonduong/pixart/blob/main/images/pixart.png?raw=true" alt="Logo" >
 </p>                                                                                                                             
                                                                                                                                                       
 ## About The Project
