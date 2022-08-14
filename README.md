@@ -10,6 +10,7 @@
     </p>
 </p>
 <p align="center">
+    <a href="https://johnsonduong.github.io/pixart/">Live Demo</a> •
   <a href="#about-the-project">About The Project</a> •
   <a href="#tech-stack">Tech Stack</a>
 </p>  
@@ -20,7 +21,7 @@
 </p>                                                                                                                             
                                                                                                                                                       
 ## About The Project
-PixArt is a online drawing web application for anyone to doodle around and draw pixel art. The app allows users to change the pen colour, background colour, erase, and change the canvas grid. Created without using any libraries!
+PixArt is an online drawing web application for anyone to doodle around and draw pixel art. The app allows users to change the pen colour, background colour, erase, and change the canvas grid size. Created without using any libraries!
 
 ## Tech Stack
   <a href="" target="_blank"><img alt="JavaScript" src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"></a>
