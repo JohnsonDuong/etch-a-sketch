@@ -5,7 +5,7 @@
   <br>PixArt
 </h1>
 <p align="center">
-    An online pixel art drawing application.
+    An online pixel art drawing application
     <br />
     </p>
 </p>
